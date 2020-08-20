@@ -1,0 +1,11 @@
+{
+  "name": "node-example1",
+  "version": "1.0.0",
+  "description": "first example from coursera course",
+  "main": "index.js",
+  "scripts": { 
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Duchesne Antoine",
+  "license": "ISC"
+}
