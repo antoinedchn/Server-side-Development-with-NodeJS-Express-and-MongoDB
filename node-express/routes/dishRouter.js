@@ -5,6 +5,8 @@ const dishRouter = express.Router();
 
 dishRouter.use(bodyParser.json());
 
+//route = url + method
+
 dishRouter.route('/')
 .all((req,res,next) => {
     res.statusCode = 200;
@@ -24,5 +26,26 @@ dishRouter.route('/')
 .delete((req, res, next) => {
     res.end('Deleting all dishes');
 });
+
+dishRouter.route('/:dishId')
+.all((req,res,next) => {
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'text/plain');
+    next();
+})
+.get((req,res,next) => {
+    res.end(`Will send the dish ${req.params.dishId} to you!`);
+})
+.post((req, res, next) => {
+    res.end('Will add the dish: ' + req.params.dishId + ' with details: ' + req.body.description);
+})
+.put((req, res, next) => {
+    res.write('Updating the dish: ' + req.params.dishId + '\n');
+    res.end('We will update the dish: ' + req.params.dishId +' with details: ' + req.body.description)
+})
+.delete((req, res, next) => {
+    res.end('We will delete the dish : ' + req.params.dishId);
+});
+
 
 module.exports = dishRouter;
